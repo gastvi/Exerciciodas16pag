@@ -2,62 +2,70 @@ package Exercicio1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Curso {
 
     private String nome;
     private int codigoDoCurso;
-    private  int maximoDeAlunos;
     private ProfessorTitular professorTitular;
     private ProfessorAdjunto professorAdjunto;
+    private int maximoDeAlunos;
+    private List<Aluno> listaDeAlunos = new ArrayList<>();
 
 
-    public Curso(String nome, int codigoDoCurso, ProfessorTitular professorTitular, ProfessorAdjunto professorAdjunto,
-                 int maximoDeAlunos) {
+    //------------------------------------construtores------------------------------------------------------------------
+
+    public Curso(String nome, int codigoDoCurso, int maximoDeAlunos) {
         this.nome = nome;
         this.codigoDoCurso = codigoDoCurso;
-        this.professorTitular = professorTitular;
-        this.professorAdjunto = professorAdjunto;
         this.maximoDeAlunos = maximoDeAlunos;
     }
 
+    public Curso(int codigoDoCurso) {
+        this.codigoDoCurso = codigoDoCurso;
+    }
+    //------------------------------------construtores------------------------------------------------------------------
 
-    public Boolean adicionaraluno(Aluno aluno) {
 
-        List<Aluno> lista = new ArrayList<>();
-        if (lista.size() < maximoDeAlunos) {
-            lista.add(aluno);
+    //------------------------------------metodos-----------------------------------------------------------------------
+    public Boolean adicionarUmAluno(Aluno umAluno){
+        if(listaDeAlunos.size() < maximoDeAlunos ){
+            listaDeAlunos.add(umAluno);
             return true;
-        }else {
+        } else{
             return false;
         }
     }
 
 
     public void excluirAluno(Aluno umAluno){
-        List<Aluno> lista= new ArrayList<>();
-        lista.remove(umAluno);
+        listaDeAlunos.remove(umAluno);
     }
 
 
-    public  void visualizaralunos(){
-        List<Aluno> lista= new ArrayList<>();
-        for (Aluno veralunos: lista) {
-            System.out.println(lista);
-        }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Curso curso = (Curso) o;
+        return codigoDoCurso == curso.codigoDoCurso &&
+                maximoDeAlunos == curso.maximoDeAlunos &&
+                Objects.equals(nome, curso.nome);
     }
 
-
-    public void mesmoCurso(int codigo, int codigo2){
-        if(codigo == codigo2 ){
-            System.out.println("eles possuem o mesmo codigo");
-        } else {
-            System.out.println("eles não tem o mesmo codigo");
-        }
+    @Override
+    public String toString() {
+        return "Curso{" +
+                "nome='" + nome + '\'' +
+                ", codigoDoCurso=" + codigoDoCurso +
+                ", maximoDeAlunos=" + maximoDeAlunos +
+                '}';
     }
+//------------------------------------metodos-----------------------------------------------------------------------
 
 
-
+    //-----------------------------------get and set--------------------------------------------------------------------
     public int getCodigoDoCurso() {
         return codigoDoCurso;
     }
@@ -89,4 +97,22 @@ public class Curso {
     public void setProfessorAdjunto(ProfessorAdjunto professorAdjunto) {
         this.professorAdjunto = professorAdjunto;
     }
+
+    public int getMaximoDeAlunos() {
+        return maximoDeAlunos;
+    }
+
+    public void setMaximoDeAlunos(int maximoDeAlunos) {
+        this.maximoDeAlunos = maximoDeAlunos;
+    }
+
+    public List<Aluno> getListaDeAlunos() {
+        return listaDeAlunos;
+    }
+
+    public void setListaDeAlunos(List<Aluno> listaDeAlunos) {
+        this.listaDeAlunos = listaDeAlunos;
+    }
+
+    //-----------------------------------get and set--------------------------------------------------------------------
 }

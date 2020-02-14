@@ -5,75 +5,87 @@ import java.util.List;
 
 public class DigitalHouseManager {
 
-private Curso curso;
-private ProfessorAdjunto professorAdjunto;
-private ProfessorTitular professorTitular;
-private Matricula matricula;
+    public List<Aluno> listaDeAlunos = new ArrayList<>();
+    public List<Aluno> getListaDeAlunosMatriculados = new ArrayList<>();
+    public List<Professor> listaDeProfessores = new ArrayList<>();
+    public List<Curso> listaDeCursos = new ArrayList<>();
+    public List<Matricula> listaDaMatricula = new ArrayList<>();
+
+    //-----------------------------------cursos-------------------------------------------------------------------------
+    public void registrarCurso(String nome, Integer codigoCurso, Integer quantidadeMaximaDeAlunos) {
+        Curso curso = new Curso(nome, codigoCurso, quantidadeMaximaDeAlunos);
+        listaDeCursos.add(curso);
+        System.out.println(listaDeCursos);
+    }
 
 
-    public Boolean adicionaraluno(Aluno aluno) {
+    public void excluirCurso(Integer codigoCurso) {
 
-        List<Aluno> lista = new ArrayList<>();
-        if (lista.size() < Curso.maximoDeAlunos()) {
-            lista.add(aluno);
-            return true;
-        }else {
-            return false;
+        for (int i = 0; i < listaDeCursos.size(); i++) {
+            if (listaDeCursos.get(i).getCodigoDoCurso() == codigoCurso) {
+                listaDeCursos.remove(i);
+                System.out.println(listaDeCursos);
+            }
+        }
+
+    }
+    //-----------------------------------cursos-------------------------------------------------------------------------
+
+
+    //-----------------------------------professores--------------------------------------------------------------------
+    public void registrarProfessorAdjunto(String nome, String sobrenome, int tempodecasa, int codigoProfessor, int quantidadeDeHoras) {
+        ProfessorAdjunto adjunto = new ProfessorAdjunto(nome, sobrenome, tempodecasa, codigoProfessor, quantidadeDeHoras);
+        listaDeProfessores.add(adjunto);
+        System.out.println(listaDeProfessores);
+    }
+
+
+    public void registrarProfessorTitular(String nome, String sobrenome, int tempodecasa, int codigoProfessor, String especialidade) {
+        ProfessorTitular titular = new ProfessorTitular(nome, sobrenome, tempodecasa, codigoProfessor, especialidade);
+        listaDeProfessores.add(titular);
+        System.out.println(listaDeProfessores);
+    }
+
+
+    public void excluirProfessor(Integer codigoProfessor) {
+        for (int i = 0; i < listaDeProfessores.size(); i++) {
+            if (listaDeProfessores.get(i).getCodigoProfessor() == codigoProfessor) {
+                listaDeProfessores.remove(i);
+                System.out.println(listaDeCursos);
+            }
         }
     }
 
+    //-----------------------------------professores--------------------------------------------------------------------
 
-    public  void visualizaralunos(){
-        List<Aluno> lista= new ArrayList<>();
-        for (Aluno veralunos: lista) {
-            System.out.println(lista);
+
+    //-----------------------------------Alunos-------------------------------------------------------------------------
+    public void matricularAluno(String nome, String sobrenome, Integer codigoAluno) {
+        Aluno aluno = new Aluno(nome, sobrenome, codigoAluno);
+        listaDeAlunos.add(aluno);
+        System.out.println(listaDeAlunos);
+    }
+
+    public void matricularAlunoEmCurso(Integer codigoAluno, Integer codigoCurso) {
+        Aluno aluno = new Aluno(codigoAluno);
+        Curso curso = new Curso(codigoCurso);
+        for (int i = 0; i < listaDeCursos.size(); i++) {
+            if (listaDeCursos.get(i).getCodigoDoCurso() == codigoCurso) {
+                System.out.println(listaDeCursos.get(i));
+            }
         }
-    }
 
-    public void adicionarprofessor(Professor professor) {
-
-        List<Professor> lista2= new ArrayList<>();
-            lista2.add(professor);
-        System.out.println(lista2);
-    }
-
-    public void excluirprofessor(int professor) {
-
-        List<Professor> lista2= new ArrayList<>();
-        lista2.remove(professor);
-    }
+            for (int x = 0; x < listaDeAlunos.size(); x++) {
+                if (listaDeAlunos.get(x).getCodigoDeAluno() == codigoAluno) {
+                    System.out.println(listaDeAlunos.get(x));
+                }
+            }
 
 
-
-
-
-
-    public void adicionarcurso(Curso curso) {
-
-        List<Curso> lista3= new ArrayList<>();
-            lista3.add(curso);
-        System.out.println(lista3);
+                System.out.println(listaDaMatricula);
 
     }
 
-    public void excluirCurso(int codigoCurso){
-        List<Curso> lista3= new ArrayList<>();
-        lista3.remove(codigoCurso);
-    }
 
-    public  void visualizarcurso(Curso curso){
-        List<Curso> lista3= new ArrayList<>();
-        for (Curso vercurso: lista3) {
-            System.out.println(lista3);
-        }
-    }
-
-
-    public void adicionarmatricula(Matricula matricula) {
-
-        List<Matricula> lista4= new ArrayList<>();
-            lista4.add(matricula);
-        System.out.println(lista4);
-    }
 
 }

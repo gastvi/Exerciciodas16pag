@@ -8,6 +8,7 @@ public class Matricula {
     private Curso curso;
     private Date dataDeMatricula = new Date();
 
+    //------------------------------------construtores------------------------------------------------------------------
 
     public Matricula(Aluno aluno, Curso curso, Date dataDeMatricula) {
         this.aluno = aluno;
@@ -15,9 +16,25 @@ public class Matricula {
         this.dataDeMatricula = dataDeMatricula;
     }
 
+    //------------------------------------construtores------------------------------------------------------------------
 
 
+    //------------------------------------metodos-----------------------------------------------------------------------
 
+    @Override
+    public String toString() {
+        return "Matricula{" +
+                "aluno=" + aluno +
+                ", curso=" + curso +
+                ", dataDeMatricula=" + dataDeMatricula +
+                '}';
+    }
+
+
+    //------------------------------------metodos-----------------------------------------------------------------------
+
+
+    //-----------------------------------get and set--------------------------------------------------------------------
     public Aluno getAluno() {
         return aluno;
     }
@@ -41,4 +58,6 @@ public class Matricula {
     public void setDataDeMatricula(Date dataDeMatricula) {
         this.dataDeMatricula = dataDeMatricula;
     }
+
+    //-----------------------------------get and set--------------------------------------------------------------------
 }

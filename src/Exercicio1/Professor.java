@@ -8,6 +8,7 @@ public class Professor {
     private  int codigoProfessor;
 
 
+    //------------------------------------construtores------------------------------------------------------------------
 
     public Professor(String nome, String sobrenome, int tempodecasa, int codigoProfessor) {
         this.nome = nome;
@@ -15,16 +16,31 @@ public class Professor {
         this.tempodecasa = tempodecasa;
         this.codigoProfessor = codigoProfessor;
     }
+    //------------------------------------construtores------------------------------------------------------------------
 
-    public void mesmoProfessor(int codigo, int codigo2){
-        if(codigo == codigo2 ){
-            System.out.println("eles possuem o mesmo codigo");
-        } else {
-            System.out.println("eles não tem o mesmo codigo");
-        }
+
+    //------------------------------------metodos-----------------------------------------------------------------------
+    @Override
+    public String toString() {
+        return "Professor{" +
+                "nome='" + nome + '\'' +
+                ", sobrenome='" + sobrenome + '\'' +
+                ", tempodecasa=" + tempodecasa +
+                ", codigoProfessor=" + codigoProfessor +
+                '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Professor professor = (Professor) o;
+        return codigoProfessor == professor.codigoProfessor;
+    }
+    //------------------------------------metodos-----------------------------------------------------------------------
 
+
+    //-----------------------------------get and set--------------------------------------------------------------------
     public String getNome() {
         return nome;
     }
@@ -57,4 +73,5 @@ public class Professor {
         this.codigoProfessor = codigoProfessor;
     }
 
+    //-----------------------------------get and set--------------------------------------------------------------------
 }

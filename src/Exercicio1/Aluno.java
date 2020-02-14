@@ -3,29 +3,39 @@ package Exercicio1;
 public class Aluno {
      private String  nome;
      private String sobrenome;
-    private int codigoDeAluno;
+     private int codigoDeAluno;
 
 
+    //------------------------------------construtores------------------------------------------------------------------
     public Aluno(String nome, String sobrenome, int codigoDeAluno) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.codigoDeAluno = codigoDeAluno;
     }
 
-    public void mesmoAluno(int aluno, int aluno2 ){
-        if(aluno == aluno2 ){
-            System.out.println("eles possuem o mesmo codigo");
-        } else {
-            System.out.println("eles não tem o mesmo codigo");
-        }
+
+    public Aluno(int codigoDeAluno) {
+        this.codigoDeAluno = codigoDeAluno;
     }
+    //------------------------------------construtores------------------------------------------------------------------
 
 
+    //------------------------------------metodos-----------------------------------------------------------------------
     @Override
-    public int hashCode() {
-        return 0;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Aluno aluno = (Aluno) o;
+        return codigoDeAluno == aluno.codigoDeAluno;
     }
 
+
+
+
+    //------------------------------------metodos-----------------------------------------------------------------------
+
+
+    //------------------------------------get and set-------------------------------------------------------------------
     public String getNome() {
         return nome;
     }
@@ -49,6 +59,8 @@ public class Aluno {
     public void setCodigoDeAluno(int codigoDeAluno) {
         this.codigoDeAluno = codigoDeAluno;
     }
+    //------------------------------------get and set-------------------------------------------------------------------
+
 }
 
 
